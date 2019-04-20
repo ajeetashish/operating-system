@@ -11,6 +11,7 @@
 #define RR 1
 
 int system_time=0,runningtime=0,AllEx=0,Context_Switch_Permitted=1,AlreadyRuns=0,n,Cur_Mode=RR,TymQuanta;
+//allex is used for when all the program exited from both the queues Cur_mode tells which queue is running at the time
 struct Proc_Det 
 {
 	int pid;
@@ -87,11 +88,21 @@ void enqueuep(struct Proc_Det *pros)
 }
 
 
-
-
-
-
-//put here
+struct Proc_Det *  deQueuep()
+{
+     if(RQ1->front==NULL)
+     {
+	     return NULL;
+     }
+     struct Proc_Det * temp=RQ1->front;
+     RQ1->front=RQ1->front->next;
+     temp->next=NULL;
+     if(RQ1->front==NULL)
+     {
+	     RQ1->rear=NULL;
+     }
+     return temp;
+}
 
 void enqueue(struct Proc_Det *pros)
 {
@@ -376,4 +387,5 @@ for(int i=0;i<n;i++)
            
 	}
 printf("\n\n Avergae TurnAroundTime=%f \t Average WaitingTime=%f\n\n",(sumtat/(n*1.0)),(sumwt/(n*1.0)));
+printf("\n\n\n ***************************************************\n\n\n");	
 }

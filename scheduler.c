@@ -85,21 +85,13 @@ void enqueuep(struct Proc_Det *pros)
 		}
 	}
 }
-struct Proc_Det *  deQueuep()
-{
-     if(RQ1->front==NULL)
-     {
-	     return NULL;
-     }
-     struct Proc_Det * temp=RQ1->front;
-     RQ1->front=RQ1->front->next;
-     temp->next=NULL;
-     if(RQ1->front==NULL)
-     {
-	     RQ1->rear=NULL;
-     }
-     return temp;
-}
+
+
+
+
+
+
+//put here
 
 void enqueue(struct Proc_Det *pros)
 {
